@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ActionButton from "../../../components/ActionButton";
 import { feedbackText, initialOrderIds } from "../../../content/missions";
 import { evaluateOrder } from "../../../domain/paragraphEvaluator";
 import type { ParagraphEvaluation } from "../../../domain/types";
@@ -117,13 +118,9 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
       </ul>
 
       <div className="workbench-actions">
-        <button
-          type="button"
-          className="action-button action-button--primary gi-pulse"
-          onClick={test}
-        >
+        <ActionButton pulse onClick={test}>
           문단 시험하기
-        </button>
+        </ActionButton>
       </div>
 
       {feedback?.accepted && (

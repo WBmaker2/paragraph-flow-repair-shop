@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ActionButton from "../../../components/ActionButton";
 import { relationLabels } from "../../../content/missions";
 import type { Relation } from "../../../domain/types";
 import type { StepProps } from "../stepTypes";
@@ -71,14 +72,9 @@ export default function ExplainStep({ record, dispatch }: StepProps) {
       />
 
       <div className="workbench-actions">
-        <button
-          type="button"
-          className="action-button action-button--primary gi-pulse"
-          disabled={relation === null}
-          onClick={complete}
-        >
+        <ActionButton pulse disabled={relation === null} onClick={complete}>
           수리 완료 확인
-        </button>
+        </ActionButton>
       </div>
     </div>
   );
