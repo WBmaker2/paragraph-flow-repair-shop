@@ -1,0 +1,36 @@
+/* 디자인 토큰 — 밝은 종이 작업대 라이트 모드 고정(다크 모드 없음, 계획 §6). */
+:root {
+  --paper-bg: #fdf8ef;
+  --paper-raised: #ffffff;
+  --paper-shadow: #f1e6d2;
+  --ink: #2b2620;
+  --ink-soft: #5c554a;
+  --line: #d8c9ac;
+  --accent: #3b6ea5;
+  --accent-ink: #ffffff;
+  --success: #2f7d4f;
+  --success-bg: #e7f4ec;
+  --warning: #a35d4e;
+  --warning-bg: #f9ece9;
+  --focus: #1d4ed8;
+  --radius: 12px;
+  --font-size-base: 17px;
+  --line-height: 1.65;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  margin: 0;
+  background: var(--paper-bg);
+  color: var(--ink);
+  font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+  line-height: var(--line-height);
+}
+
+/* 글자 크기 도구(세션 메모리 전용, 저장 없음) */
+html.text-large {
+  font-size: 21px;
+}

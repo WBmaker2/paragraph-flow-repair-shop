@@ -1,0 +1,39 @@
+/* 모션 — gi-pulse는 문단 시험하기·수리 완료 확인 두 필수 버튼에만 사용(계획 §10). */
+.gi-pulse {
+  animation: gi-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes gi-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 110, 165, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(59, 110, 165, 0);
+  }
+}
+
+/* 축소 모션: 이동·맥박 제거, 3px 고정 외곽선과 필수 배지로 대체. */
+@media (prefers-reduced-motion: reduce) {
+  .gi-pulse {
+    animation: none;
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .gi-pulse::after {
+    content: "필수";
+    display: inline-block;
+    margin-left: 0.4rem;
+    padding: 0 0.4rem;
+    border: 2px solid var(--focus);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .sentence-card,
+  .sentence-card * {
+    transition: none !important;
+  }
+}
