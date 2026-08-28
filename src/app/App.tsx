@@ -5,6 +5,8 @@ import AccessibilityToolbar from "../accessibility/AccessibilityToolbar";
 import UpdateHistoryButton from "../components/UpdateHistoryButton";
 import EntranceScreen from "../features/paragraph-repair/EntranceScreen";
 import ParagraphWorkbench from "../features/paragraph-repair/ParagraphWorkbench";
+import LearningReport from "../features/report/LearningReport";
+import "../features/report/print.css";
 
 /** 단계가 바뀌면 mainHeadingRef로 초점을 옮기고 시작점으로 스크롤한다(계획 문서 §3). */
 function useStepFocus(headingRef: RefObject<HTMLHeadingElement>, step: SessionStep, missionIndex: number) {
@@ -50,9 +52,7 @@ export default function App() {
           />
         )}
         {state.step === "REPORT" && (
-          <h1 tabIndex={-1} ref={headingRef} className="screen-title">
-            수리 기록
-          </h1>
+          <LearningReport key="report" state={state} dispatch={dispatch} headingRef={headingRef} />
         )}
       </main>
     </div>
