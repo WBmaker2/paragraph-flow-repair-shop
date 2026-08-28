@@ -244,6 +244,11 @@ export const pairFeedback: Readonly<Record<string, string>> = {
   "connector.rejected": "이 표현은 앞뒤 문장의 관계와 어울리지 않아요. 두 문장이 어떻게 이어지는지 다시 읽어 보세요.",
 };
 
+/** evidenceKeys를 학생용 문구로 번역한다. 없는 키는 키 자체를 돌려준다. */
+export function feedbackText(key: string): string {
+  return pairFeedback[key] ?? key;
+}
+
 /** 미션 제목(입구·보고서 표시용). */
 export const missionTitles: Readonly<Record<MissionId, string>> = {
   "paragraph-garden-01": "학교 화단 씨앗 심기",

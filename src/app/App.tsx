@@ -42,7 +42,12 @@ export default function App() {
           <EntranceScreen onStart={() => dispatch({ type: "START_SESSION" })} />
         )}
         {state.step !== "INTRO" && state.step !== "REPORT" && (
-          <ParagraphWorkbench state={state} headingRef={headingRef} />
+          <ParagraphWorkbench
+            key={`${state.missionIndex}-${state.step}`}
+            state={state}
+            dispatch={dispatch}
+            headingRef={headingRef}
+          />
         )}
         {state.step === "REPORT" && (
           <h1 tabIndex={-1} ref={headingRef} className="screen-title">
