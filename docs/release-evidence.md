@@ -23,14 +23,19 @@
 
 ## CI 상태
 
-- 최초 push CI: 실패 → 원인은 CI 머신에서 드라이브 기반 테스트(a11y 전 단계 스윕)가
-  vitest 기본 5초 타임아웃을 초과한 것. 해당 테스트에 60초 타임아웃을 명시해 수정.
-- 수정 커밋 push 뒤 CI 재실행 결과로 최종 판정한다(아래 표에 기록).
+- 최초 push CI 실패 원인 2건과 해결:
+  1. 드라이브 기반 테스트(a11y 전 단계 스윕)가 CI 머신에서 vitest 기본 5초 타임아웃 초과
+     → 해당 테스트에 60초 타임아웃 명시.
+  2. E2E webServer 기동 실패 — 개발 머신의 4173 포트에 다른 프로젝트 preview 서버가 상주
+     (Playwright `reuseExistingServer`가 이종 서버를 재사용) → E2E 전용 포트를 4175로 변경,
+     preview 바인딩을 `--host 127.0.0.1`로 명시.
+- 최종 상태(2026-08-28): 모든 워크플로 success.
 
 | 실행 | 워크플로 | 결과 |
 |---|---|---|
-| 2026-08-28 | Deploy to GitHub Pages (33176637242) | success |
-| 2026-08-28 | CI (최초 push, 33176623027) | failure(타임아웃) → 타임아웃 수정 후 재검증 |
+| 2026-08-28 | CI 33177330458 (d624edd) | success |
+| 2026-08-28 | Deploy to GitHub Pages 33177330467 (d624edd) | success |
+| 2026-08-28 | 라이브 재검증 scripts/verify-deployment.mjs | 8/8 통과 |
 
 ## 로컬 검증 (2026-08-28, npm run verify 전체 통과)
 
