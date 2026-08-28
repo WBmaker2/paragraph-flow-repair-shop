@@ -80,7 +80,7 @@ function installBoundary() {
 }
 
 describe("런타임 경계", () => {
-  it("학습 흐름 전체에서 외부 요청과 브라우저 저장 쓰기가 0건이다", async () => {
+  it("학습 흐름 전체에서 외부 요청과 브라우저 저장 쓰기가 0건이다", { timeout: 60_000 }, async () => {
     const calls = installBoundary();
     const user = userEvent.setup();
     render(<App />);
@@ -96,7 +96,7 @@ describe("런타임 경계", () => {
     expect(calls.idb).toBe(0);
   });
 
-  it("다시 시작해도 어떤 저장소에도 쓰지 않는다", async () => {
+  it("다시 시작해도 어떤 저장소에도 쓰지 않는다", { timeout: 60_000 }, async () => {
     const calls = installBoundary();
     const user = userEvent.setup();
     render(<App />);

@@ -38,7 +38,9 @@
 
 ## 출시 경계
 
-- [ ] 위 사람 검수 완료 후 사용자 출시 승인
-- [ ] 승인 후: push → WBmaker2/paragraph-flow-repair-shop main → Pages build_type=workflow
-- [ ] 배포 URL 확인(제목·favicon·자산·콘솔 오류 0건·학습 흐름·375px)
-- [ ] HVC 관리자 등록 및 정적 갤러리 동기화
+- [x] 사용자 출시 승인 (2026-08-28 "승인")
+- [x] push → WBmaker2/paragraph-flow-repair-shop main → Pages build_type=workflow 설정
+- [x] 배포 URL 확인 — scripts/verify-deployment.mjs 8/8 통과(제목·favicon·자산·콘솔 오류 0건·실제 학습 흐름·375px)
+  - 배포 URL: https://wbmaker2.github.io/paragraph-flow-repair-shop/
+  - 상세 증거: docs/release-evidence.md
+- [ ] HVC 관리자 등록 및 정적 갤러리 동기화(별도 단계, 확인 링크: https://www.vibehong.shop/)

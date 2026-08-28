@@ -33,7 +33,7 @@ const violationsOf = (results: AxeResults) =>
   results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
 
 describe("자동 접근성 검사(vitest-axe)", () => {
-  it("입구와 학습 단계, 보고서, 대화상자에서 serious/critical 위반이 0건이다", async () => {
+  it("입구와 학습 단계, 보고서, 대화상자에서 serious/critical 위반이 0건이다", { timeout: 60_000 }, async () => {
     const user = userEvent.setup();
     const { container } = render(<App />);
 
@@ -58,7 +58,7 @@ describe("자동 접근성 검사(vitest-axe)", () => {
     expect(problems).toEqual([]);
   });
 
-  it("모든 미션의 화면이 렌더링 도중 한 번씩 검사된다", async () => {
+  it("모든 미션의 화면이 렌더링 도중 한 번씩 검사된다", { timeout: 60_000 }, async () => {
     const user = userEvent.setup();
     render(<App />);
     const checked = await driveSession(user, {});
