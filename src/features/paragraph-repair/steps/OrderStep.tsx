@@ -12,15 +12,13 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
   ]);
   const [attempts, setAttempts] = useState(0);
   const [feedback, setFeedback] = useState<ParagraphEvaluation | null>(null);
-
   const sentenceById = new Map(mission.sentences.map((s) => [s.id, s]));
 
-  const move = (id: string, direction: -1 | 1) => {
-    setFeedback(null);
+  /** 가장자리에서는 동작하지 않는다. 버튼을 비활성화하지 않아 키보드 초점이 유지된다. */
+  const reorder = (id: string, to: number) => {
     setOrder((current) => {
       const from = current.indexOf(id);
-      const to = from + direction;
-      if (from < 0 || to < 0 || to >= current.length) return current;
+      if (from < 0 || to < 0 || to >= current.length || to === from) return current;
       const next = [...current];
       const [moved] = next.splice(from, 1);
       next.splice(to, 0, moved!);
@@ -28,17 +26,16 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
     });
   };
 
+  const move = (id: string, direction: -1 | 1) => {
+    setFeedback(null);
+    const from = order.indexOf(id);
+    reorder(id, from + direction);
+  };
+
   const moveTo = (id: string, position: number) => {
     setFeedback(null);
-    setOrder((current) => {
-      const from = current.indexOf(id);
-      const to = Math.min(Math.max(position - 1, 0), current.length - 1);
-      if (from < 0 || to === from) return current;
-      const next = [...current];
-      const [moved] = next.splice(from, 1);
-      next.splice(to, 0, moved!);
-      return next;
-    });
+    const to = Math.min(Math.max(position - 1, 0), order.length - 1);
+    reorder(id, to);
   };
 
   const test = () => {
@@ -97,7 +94,6 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
                   type="button"
                   className="move-button"
                   aria-label={`${sentence.text} 위로 이동`}
-                  disabled={index === 0}
                   onClick={() => move(id, -1)}
                 >
                   ↑
@@ -106,7 +102,6 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
                   type="button"
                   className="move-button"
                   aria-label={`${sentence.text} 아래로 이동`}
-                  disabled={index === order.length - 1}
                   onClick={() => move(id, 1)}
                 >
                   ↓
