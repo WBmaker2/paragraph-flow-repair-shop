@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const PORT = 4173;
+// 4173은 다른 프로젝트 preview 서버와 충돌할 수 있어 비충돌 포트를 사용한다.
+const PORT = 4175;
 const BASE = `/paragraph-flow-repair-shop/`;
 
 export default defineConfig({
