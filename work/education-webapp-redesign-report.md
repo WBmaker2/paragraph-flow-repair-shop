@@ -118,4 +118,4 @@ hero가 보류된 이유는 승인된 raster comp가 실제 제품에 없는 합
 | 인앱 브라우저 1280/390/320px | 확인 | 가로 넘침 없음, 이미지 수·레이어 확인 |
 | 실제 6개 미션 완료 → 수리 기록 | 확인 | 기록 화면에 장면 6개 생성 |
 
-이번 후속 변경은 로컬 소스에 반영하고 검증했지만, 별도 커밋·푸시·배포는 아직 수행하지 않았습니다. 기존 공개본은 [GitHub Pages 앱](https://wbmaker2.github.io/paragraph-flow-repair-shop/)에서 확인할 수 있으며, 새 이미지 중심 변경의 공개 반영은 다음 릴리스 작업에서 진행합니다.
+이번 후속 변경은 `1f7f020`(`feat: add contextual mission visuals`)으로 커밋·푸시했습니다. [CI 실행](https://github.com/WBmaker2/paragraph-flow-repair-shop/actions/runs/33297838395)은 성공했고 E2E 9개를 통과했으며, [Pages 배포 실행](https://github.com/WBmaker2/paragraph-flow-repair-shop/actions/runs/33297838426)도 성공했습니다. [공개 학습 앱](https://wbmaker2.github.io/paragraph-flow-repair-shop/)에서 새 아틀라스·도구 WebP, JS, CSS가 모두 HTTP 200이고, 375px 실제 첫 미션 진입·가로 넘침 없음·콘솔 오류 없음을 확인했습니다.
