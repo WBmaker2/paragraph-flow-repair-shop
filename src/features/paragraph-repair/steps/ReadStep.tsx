@@ -59,6 +59,7 @@ export default function ReadStep({ mission, record, dispatch }: StepProps) {
       <div className="workbench-actions">
         <ActionButton
           pulse
+          aria-label="다음"
           disabled={judgment === null}
           onClick={() => dispatch({ type: "ADVANCE" })}
         >
