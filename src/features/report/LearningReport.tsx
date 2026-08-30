@@ -14,6 +14,7 @@ import {
   evaluateTopic,
 } from "../../domain/paragraphEvaluator";
 import ModalDialog from "../../components/ModalDialog";
+import MissionSceneArt from "../paragraph-repair/MissionSceneArt";
 
 interface LearningReportProps {
   readonly state: SessionState;
@@ -123,6 +124,7 @@ export default function LearningReport({ state, dispatch, headingRef }: Learning
         return (
           <article key={mission.id} className="report-mission" aria-label={`${index + 1}번 미션`}>
             <header className="report-mission__header">
+              <MissionSceneArt missionIndex={index} className="mission-scene-art--report" />
               <div>
                 <p className="section-label">미션 {String(index + 1).padStart(2, "0")}</p>
                 <h3>{missionTitles[mission.id]}</h3>

@@ -7,6 +7,7 @@ import "./styles/screens.css";
 import "./styles/entrance.css";
 import "./styles/workbench.css";
 import "./styles/report.css";
+import "./styles/visuals.css";
 import "./styles/motion.css";
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {

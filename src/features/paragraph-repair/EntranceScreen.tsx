@@ -2,6 +2,7 @@ import { useState } from "react";
 import ActionButton from "../../components/ActionButton";
 import UpdateHistoryDialog from "../../components/UpdateHistoryDialog";
 import { initialOrderIds, missionTitles, missions, relationLabels } from "../../content/missions";
+import MissionSceneArt from "./MissionSceneArt";
 
 interface EntranceScreenProps {
   readonly onStart: () => void;
@@ -76,6 +77,9 @@ export default function EntranceScreen({ onStart, showHistory = true }: Entrance
               <span className="section-label">오늘의 첫 작업</span>
               <span className="entrance__preview-relation">{relationLabels[firstMission.relation]}</span>
             </div>
+            <div className="entrance__preview-art" aria-hidden="true">
+              <MissionSceneArt missionIndex={0} mode="atlas" />
+            </div>
             <h2 id="entrance-preview-title">먼저 문단의 흐름을 읽어 보세요.</h2>
             <p>
               <strong>첫 번째 문단</strong>의 문장을 차례로 읽고, 어디에서 흐름이 달라지는지 살펴봐요.
@@ -106,6 +110,7 @@ export default function EntranceScreen({ onStart, showHistory = true }: Entrance
             <ol className="mission-list">
               {missions.map((mission, index) => (
                 <li key={mission.id} className="mission-list__item">
+                  <MissionSceneArt missionIndex={index} className="mission-scene-art--thumbnail" />
                   <span className="mission-list__number" aria-hidden="true">
                     {String(index + 1).padStart(2, "0")}
                   </span>

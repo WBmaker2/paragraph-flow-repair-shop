@@ -94,3 +94,28 @@ hero가 보류된 이유는 승인된 raster comp가 실제 제품에 없는 합
 - 새 생성 이미지의 맥락·권리·편향 사람 검수는 `pending`입니다.
 - Safari, 실제 기기 물리 확대, VoiceOver는 이번 작업의 완료 근거가 아닙니다. VoiceOver는 프로젝트 규칙에 따라 구현·검증 범위에서 제외했습니다.
 - HVC 등록/동기화는 이번 요청 범위에 포함되지 않아 수행하지 않았습니다.
+
+## 승인된 이미지 중심 후속 단계 실행 결과
+
+- **승인일·실행일:** 2026-08-30
+- 첨부 레퍼런스의 종이 작업대·도구·장면 언어를 참고하되, 이미지에 placeholder 문구·점수·레벨·아바타·정답 표식을 넣지 않았습니다.
+- `src/assets/generated/mission-scenes-atlas-v2.webp`는 실제 6개 미션의 맥락 장면을 3×2 아틀라스로 제공하고, `src/assets/generated/repair-tools-v2.webp`는 작업대 안내용 도구 장식으로 제공합니다.
+- 입구에는 첫 미션 아틀라스와 6개 장면 썸네일, 작업대에는 현재 미션 장면과 도구 장식, 수리 기록에는 6개 미션 장면 썸네일을 연결했습니다.
+- 모든 이미지 레이어는 `aria-hidden="true"`, 빈 대체 텍스트, `pointer-events: none`으로 처리했습니다. 의미·상태·조작은 이미지가 없어도 DOM 텍스트와 컨트롤로 유지됩니다.
+- 생성 원본 PNG, 프롬프트, 사용 위치, 사람 검수 대기 상태는 [`docs/image-rights-ledger.md`](../docs/image-rights-ledger.md)와 [`education-webapp-redesign-assets.md`](./education-webapp-redesign-assets.md)에 기록했습니다.
+
+### 후속 검증
+
+| 검사 | 결과 | 비고 |
+|---|---|---|
+| `npm run lint` | 통과 | ESLint |
+| `npm run typecheck` | 통과 | TypeScript |
+| `npm run test:run` | 통과 | 14개 파일, 110개 테스트 |
+| `npm run test:a11y` | 통과 | serious/critical 위반 0 |
+| `npm run check:lines` | 통과 | TS/TSX/CSS 500줄 제한 |
+| `npm run build` | 통과 | 두 WebP 자산이 production bundle에 포함 |
+| `npm run test:release` | 통과 | Pages 자산 검사 4개 |
+| 인앱 브라우저 1280/390/320px | 확인 | 가로 넘침 없음, 이미지 수·레이어 확인 |
+| 실제 6개 미션 완료 → 수리 기록 | 확인 | 기록 화면에 장면 6개 생성 |
+
+이번 후속 변경은 로컬 소스에 반영하고 검증했지만, 별도 커밋·푸시·배포는 아직 수행하지 않았습니다. 기존 공개본은 [GitHub Pages 앱](https://wbmaker2.github.io/paragraph-flow-repair-shop/)에서 확인할 수 있으며, 새 이미지 중심 변경의 공개 반영은 다음 릴리스 작업에서 진행합니다.

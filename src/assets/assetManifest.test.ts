@@ -39,6 +39,16 @@ describe("생성 자산 장부 계약", () => {
 
   it("앱에서 자산을 실제로 사용한다(장식용 배경)", () => {
     const app = readFileSync(join(root, "src/app/App.tsx"), "utf8");
+    const sceneArt = readFileSync(
+      join(root, "src/features/paragraph-repair/MissionSceneArt.tsx"),
+      "utf8",
+    );
+    const toolsArt = readFileSync(
+      join(root, "src/features/paragraph-repair/RepairToolsArt.tsx"),
+      "utf8",
+    );
     expect(app).toContain("repair-desk-atmosphere-v2");
+    expect(sceneArt).toContain("mission-scenes-atlas-v2");
+    expect(toolsArt).toContain("repair-tools-v2");
   });
 });

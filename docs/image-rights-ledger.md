@@ -10,6 +10,8 @@
 |---|---|---|---|---|---|
 | 1 | `src/assets/generated/paper-repair-workbench.webp` | 앱 배경(작업대 종이 질감) | 로컬 생성 스크립트(확장 가능한 벡터 → 래스터 변환). 이미지 생성 모델 프롬프트로 재생성할 수 있도록 아래 프롬프트를 보관 | 2026-08-28 | 대기(pending) |
 | 2 | `src/assets/generated/repair-desk-atmosphere-v2.webp` | 앱 배경(교정지 여백 작업대 분위기) | 이미지 생성 모델 | 2026-08-30 | 대기(pending) |
+| 3 | `src/assets/generated/mission-scenes-atlas-v2.webp` | 입구·미션 목록·수리 기록의 6개 장면 썸네일 | 이미지 생성 모델 | 2026-08-30 | 대기(pending) |
+| 4 | `src/assets/generated/repair-tools-v2.webp` | 작업대 안내 영역의 수리 도구 장식 | 이미지 생성 모델 | 2026-08-30 | 대기(pending) |
 
 ## 생성 프롬프트 (재생성용)
 
@@ -26,6 +28,24 @@
 > still life, quiet paper texture, muted ink navy and coral accents, soft low contrast, no readable
 > text, no letters, no numbers, no logos, no people, no UI, no answer marks, no gradients. 16:9,
 > original generated asset for a static educational web app.
+
+### `mission-scenes-atlas-v2.webp`
+
+> A 3x2 illustration atlas for a Korean elementary language-learning web app, used as six small
+> decorative mission thumbnails. Panel 1 is a generic school flowerbed with soil and a seed;
+> panel 2 is a wet playground with puddles and a covered gym-like shelter; panel 3 is two
+> contrasting reading nooks; panel 4 is a plain reusable water bottle on an art-room shelf;
+> panel 5 is a generic butterfly observation scene; panel 6 is a sunny playground with a shade
+> shelter. Warm ivory paper, hand-inked editorial illustration, muted navy/coral/sage. No readable
+> text, letters, numbers, logos, UI, scores, labels, answer marks, people, or faces.
+
+### `repair-tools-v2.webp`
+
+> A vertical decorative classroom paragraph-repair tool panel with a graphite pencil, coral
+> correction tape, navy binder clip, magnifying glass, and blank ruled paper strips on warm ivory
+> notebook paper. Keep the center quiet for real HTML content. Hand-inked editorial illustration,
+> muted navy/coral/sage. No readable text, letters, numbers, logos, UI, scores, labels, answer
+> marks, people, or faces.
 
 ## 권리 및 제약
 

@@ -11,9 +11,14 @@
 | `assets/plates/pencil.webp` | 입구 화면 가장자리의 장식용 연필 | 삭제해도 장식만 사라짐 | PNG 원본에서 최적화한 파생본, 사람 검수 대기 |
 | `assets/plates/binder-clip.webp` | 입구 화면 가장자리의 장식용 바인더 클립 | 삭제해도 장식만 사라짐 | PNG 원본에서 최적화한 파생본, 사람 검수 대기 |
 | `assets/plates/paper-strips.webp` | 입구 화면 가장자리의 빈 문장 띠 모양 장식 | 삭제해도 장식만 사라짐 | PNG 원본에서 최적화한 파생본, 사람 검수 대기 |
+| `src/assets/generated/mission-scenes-atlas-v2.webp` | 실제 6개 미션의 장면을 보여 주는 입구·미션 목록·기록용 아틀라스 | 삭제해도 미션명·문장·판정·기록은 유지됨 | `assets/generated-source/mission-scenes-atlas-v2.png`에서 WebP 파생, 이미지 생성, 사람 검수 대기 |
+| `src/assets/generated/repair-tools-v2.webp` | 작업대 안내 영역의 연필·수정테이프·클립·문장지 장식 | 삭제해도 작업 안내와 조작은 유지됨 | `assets/generated-source/repair-tools-v2.png`에서 WebP 파생, 이미지 생성, 사람 검수 대기 |
 
 모든 장식 이미지는 `aria-hidden="true"`, 빈 대체 텍스트, `pointer-events: none`으로 연결했습니다.
 학생이 읽어야 하는 문장·관계·근거·진행 단계는 이미지에 의존하지 않습니다.
+새 아틀라스는 `MissionSceneArt.tsx`가 3×2 셀을 CSS 배경으로 잘라 사용하고, 도구 이미지는
+`RepairToolsArt.tsx`가 작업대 안내용으로 표시합니다. 원본 PNG는 `assets/generated-source/`에
+보존하고, 이미지 안의 줄·도형은 읽을 수 있는 안내 문구로 취급하지 않습니다.
 
 ## 보존한 기존 자산
 

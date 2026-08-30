@@ -6,7 +6,7 @@ import { missionTitles, missions } from "../../content/missions";
 
 describe("입구 화면", () => {
   it("학습 목표, 6개 미션, 예상 시간, 저장 안내를 보여 준다", () => {
-    render(<EntranceScreen onStart={() => {}} />);
+    const { container } = render(<EntranceScreen onStart={() => {}} />);
     expect(
       screen.getByLabelText("학습 목표"),
     ).toHaveTextContent(/문단은 문장이 모인 것이 아니라, 중심 생각으로 이어진 글이에요/);
@@ -15,6 +15,8 @@ describe("입구 화면", () => {
     }
     expect(screen.getByText(/15~25분/)).toBeInTheDocument();
     expect(screen.getByText(/새로고침하면 사라져요/)).toBeInTheDocument();
+    expect(container.querySelectorAll(".mission-scene-art--thumbnail")).toHaveLength(6);
+    expect(container.querySelector(".mission-scene-art--atlas")).toBeInTheDocument();
   });
 
   it("시작 버튼을 누르면 onStart가 호출된다", async () => {

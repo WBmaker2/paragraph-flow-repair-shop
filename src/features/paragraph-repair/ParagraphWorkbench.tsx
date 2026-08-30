@@ -9,6 +9,8 @@ import OrderStep from "./steps/OrderStep";
 import RelevanceStep from "./steps/RelevanceStep";
 import ConnectorStep from "./steps/ConnectorStep";
 import ExplainStep from "./steps/ExplainStep";
+import MissionSceneArt from "./MissionSceneArt";
+import RepairToolsArt from "./RepairToolsArt";
 
 const STEP_TITLES: Partial<Record<SessionStep, string>> = {
   READ: "전체 읽기",
@@ -50,8 +52,11 @@ export default function ParagraphWorkbench({ state, dispatch, headingRef }: Para
           <p className="workbench__mission-context">문단의 흐름을 읽고 근거로 수리하는 시간이에요.</p>
         </div>
         <div className="workbench__status" aria-label="미션 진행 상태">
-          <strong>미션 {state.missionIndex + 1} / {missions.length}</strong>
-          <span className="mission-relation">{relationLabels[mission.relation]}</span>
+          <MissionSceneArt missionIndex={state.missionIndex} className="mission-scene-art--status" />
+          <div className="workbench__status-copy">
+            <strong>미션 {state.missionIndex + 1} / {missions.length}</strong>
+            <span className="mission-relation">{relationLabels[mission.relation]}</span>
+          </div>
         </div>
       </header>
 
@@ -70,6 +75,9 @@ export default function ParagraphWorkbench({ state, dispatch, headingRef }: Para
           <p className="section-label">수리 메모</p>
           <p>정답을 빨리 찾기보다 문장 안의 단서를 따라가 보세요.</p>
           <p className="workbench__guide-note">판단한 내용은 이번 탭의 기록에만 남아요.</p>
+          <div className="workbench__guide-tools">
+            <RepairToolsArt />
+          </div>
         </aside>
         <div className="workbench__task">
           {state.step === "READ" && <ReadStep {...stepProps} />}
