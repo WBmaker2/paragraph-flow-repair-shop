@@ -3,7 +3,7 @@
 - **실행일:** 2026-08-30
 - **대상:** `/Volumes/ External Drive 256G/Dev2/codex/paragraph-flow-repair-shop`
 - **요청 범위:** 기존 교육용 React 앱의 전체 시각·상호작용 리디자인
-- **현재 상태:** 소스 구현과 로컬 검증 완료. 커밋·푸시·배포·HVC 등록은 수행하지 않음.
+- **현재 상태:** 커밋·푸시·GitHub Pages 배포 완료. HVC 등록은 수행하지 않음.
 
 ## 결론
 
@@ -57,7 +57,7 @@
 | `npm run test:release` | 통과 | Pages asset 검사 4개 |
 | Impeccable detector | 통과 | 최종 결과 findings `[]` |
 
-`npm run test:e2e`는 리디자인 전 기준선에서 앱 assertion에 들어가기 전에 macOS Chromium의 `mach_port_rendezvous` / `SIGTRAP`으로 시작하지 못했습니다. 동일한 시작 방식을 반복해 제품 결함으로 오인하지 않았고, 인앱 브라우저의 실제 화면·단계 흐름 확인을 별도 증거로 사용했습니다.
+리디자인 첫 푸시(`f794525`)의 CI에서는 reduced-motion에서 `gi-pulse::after`의 `필수` 배지가 기존 `다음` 접근성 이름 조회와 충돌했습니다. `bd25f73`에서 읽기 단계 버튼에 명시적 `aria-label="다음"`을 추가했고, 최신 GitHub Actions CI에서 9개 E2E가 모두 통과했습니다. 로컬 macOS의 최초 기준선에서는 Chromium `mach_port_rendezvous` / `SIGTRAP` 런치 실패가 있었으므로, 로컬과 CI 환경의 증거는 분리해 기록합니다.
 
 ## 브라우저 확인
 
@@ -67,7 +67,17 @@ Codex 인앱 브라우저에서 실제 로컬 앱을 확인했습니다.
 - 390px: 입장 화면과 작업 화면에서 가로 넘침이 없고, 단계 제목에 포커스가 이동했습니다. 순서 수리 카드의 문장·위치 입력·위/아래 조작이 카드 안에서 줄바꿈되었습니다.
 - 320px: `document.documentElement.scrollWidth === clientWidth`로 확인했고, `활동 시작하기` CTA가 첫 viewport 안에 보였습니다.
 - 시작 → 읽기 → 중심 문장 선택 → 피드백 → 순서 단계까지 실제 조작했고, 업데이트 대화상자는 2026-08-30 리디자인 기록과 2026-08-28 기록을 표시했습니다. 단계 전환 후 `workbench-title`에 포커스가 이동했습니다.
-- 긴 6개 미션 전체 자동화는 macOS 브라우저 세션 시간 제한으로 미션 5의 관련성 단계에서 중단되어, 전체 완주를 관찰했다고 주장하지 않습니다. 기능 회귀는 단위·접근성 테스트로 별도 확인했습니다.
+- 로컬 인앱 브라우저의 긴 6개 미션 수동 자동화는 미션 5의 관련성 단계에서 세션 시간 제한으로 중단되었지만, 최신 GitHub Actions의 320px 전체 경로 테스트를 포함한 9개 E2E가 통과했습니다.
+
+## 커밋·푸시·배포 증거
+
+- 기능 리디자인 커밋: `f794525` (`feat: redesign paragraph flow repair shop`)
+- reduced-motion 호환성 수정 커밋: `bd25f73` (`fix: preserve reduced-motion next button name`)
+- 두 커밋 모두 원격 `main`에 푸시되어 있습니다.
+- [최신 CI 실행](https://github.com/WBmaker2/paragraph-flow-repair-shop/actions/runs/33296076373): 성공, 9개 E2E 포함
+- [최신 Pages 배포 실행](https://github.com/WBmaker2/paragraph-flow-repair-shop/actions/runs/33296076341): 성공
+- [공개 학습 앱](https://wbmaker2.github.io/paragraph-flow-repair-shop/): HTTP 200, 제목·시작 버튼·첫 미션 작업 화면 확인
+- 공개 JS, CSS, 새 배경 WebP 자산도 각각 HTTP 200이며, 375px에서 가로 넘침 없이 시작 → 첫 미션 경로가 열립니다.
 
 ## Impeccable 단계 상태
 
@@ -83,4 +93,4 @@ hero가 보류된 이유는 승인된 raster comp가 실제 제품에 없는 합
 - [`docs/content-review.md`](../docs/content-review.md)의 교사·교과 콘텐츠 검토는 아직 승인되지 않았습니다.
 - 새 생성 이미지의 맥락·권리·편향 사람 검수는 `pending`입니다.
 - Safari, 실제 기기 물리 확대, VoiceOver는 이번 작업의 완료 근거가 아닙니다. VoiceOver는 프로젝트 규칙에 따라 구현·검증 범위에서 제외했습니다.
-- 커밋, 푸시, GitHub Pages 배포, HVC 등록/동기화는 사용자가 별도로 요청하지 않아 진행하지 않았습니다.
+- HVC 등록/동기화는 이번 요청 범위에 포함되지 않아 수행하지 않았습니다.
