@@ -4,6 +4,9 @@ import App from "./app/App";
 import "./styles/tokens.css";
 import "./styles/app.css";
 import "./styles/screens.css";
+import "./styles/entrance.css";
+import "./styles/workbench.css";
+import "./styles/report.css";
 import "./styles/motion.css";
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {

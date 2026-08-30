@@ -72,7 +72,7 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
         {order.map((id, index) => {
           const sentence = sentenceById.get(id)!;
           return (
-            <li key={id} className="sentence-card">
+            <li key={id} className="sentence-card sentence-card--reorder">
               <span className="sentence-card__position" aria-hidden="true">
                 {index + 1}
               </span>
@@ -96,7 +96,7 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
                   aria-label={`${sentence.text} 위로 이동`}
                   onClick={() => move(id, -1)}
                 >
-                  ↑
+                  위
                 </button>
                 <button
                   type="button"
@@ -104,7 +104,7 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
                   aria-label={`${sentence.text} 아래로 이동`}
                   onClick={() => move(id, 1)}
                 >
-                  ↓
+                  아래
                 </button>
               </span>
             </li>
@@ -113,20 +113,19 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
       </ul>
 
       <div className="workbench-actions">
-        <ActionButton pulse onClick={test}>
+        <ActionButton pulse={feedback === null} onClick={test}>
           문단 시험하기
         </ActionButton>
       </div>
 
       {feedback?.accepted && (
         <FeedbackPanel tone="success" title="문단이 자연스럽게 이어져요!" items={evidenceItems}>
-          <button
-            type="button"
-            className="action-button action-button--primary"
+          <ActionButton
+            pulse
             onClick={() => dispatch({ type: "ADVANCE" })}
           >
             다음 단계로
-          </button>
+          </ActionButton>
         </FeedbackPanel>
       )}
 
@@ -146,13 +145,12 @@ export default function OrderStep({ mission, record, dispatch }: StepProps) {
           summary="지금 순서를 기록에 남기고 다음 단계로 가요."
           items={evidenceItems}
         >
-          <button
-            type="button"
-            className="action-button action-button--primary"
+          <ActionButton
+            pulse
             onClick={() => dispatch({ type: "ADVANCE" })}
           >
             다음 단계로
-          </button>
+          </ActionButton>
         </FeedbackPanel>
       )}
     </div>

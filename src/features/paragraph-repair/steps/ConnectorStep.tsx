@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ActionButton from "../../../components/ActionButton";
 import { feedbackText, initialOrderIds } from "../../../content/missions";
 import { evaluateConnector } from "../../../domain/paragraphEvaluator";
 import type { ConnectorEvaluation } from "../../../domain/types";
@@ -61,9 +62,7 @@ export default function ConnectorStep({ mission, record, dispatch }: StepProps) 
                 setFeedback(null);
               }}
             >
-              <span className="choice-button__mark" aria-hidden="true">
-                {selected === option.id ? "✓" : ""}
-              </span>
+              <span className="choice-button__mark" aria-hidden="true" />
               {option.text}
               {selected === option.id && <span className="choice-button__state">선택됨</span>}
             </button>
@@ -72,14 +71,13 @@ export default function ConnectorStep({ mission, record, dispatch }: StepProps) 
       </ul>
 
       <div className="workbench-actions">
-        <button
-          type="button"
-          className="action-button action-button--primary"
+        <ActionButton
+          pulse={feedback === null && Boolean(selected)}
           disabled={!selected}
           onClick={confirm}
         >
           선택 완료
-        </button>
+        </ActionButton>
       </div>
 
       {feedback?.accepted && (
@@ -94,13 +92,12 @@ export default function ConnectorStep({ mission, record, dispatch }: StepProps) 
             },
           ]}
         >
-          <button
-            type="button"
-            className="action-button action-button--primary"
+          <ActionButton
+            pulse
             onClick={() => dispatch({ type: "ADVANCE" })}
           >
             다음 단계로
-          </button>
+          </ActionButton>
         </FeedbackPanel>
       )}
 
@@ -132,13 +129,12 @@ export default function ConnectorStep({ mission, record, dispatch }: StepProps) 
             },
           ]}
         >
-          <button
-            type="button"
-            className="action-button action-button--primary"
+          <ActionButton
+            pulse
             onClick={() => dispatch({ type: "ADVANCE" })}
           >
             다음 단계로
-          </button>
+          </ActionButton>
         </FeedbackPanel>
       )}
 

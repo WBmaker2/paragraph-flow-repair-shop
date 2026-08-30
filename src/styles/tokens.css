@@ -1,36 +1,69 @@
-/* 디자인 토큰 — 밝은 종이 작업대 라이트 모드 고정(다크 모드 없음, 계획 §6). */
+/* 교정지 여백 작업대 — 밝은 종이 작업대 라이트 모드 고정. */
 :root {
-  --paper-bg: #fdf8ef;
-  --paper-raised: #ffffff;
-  --paper-shadow: #f1e6d2;
-  --ink: #2b2620;
-  --ink-soft: #5c554a;
-  --line: #d8c9ac;
-  --accent: #3b6ea5;
-  --accent-ink: #ffffff;
-  --success: #2f7d4f;
-  --success-bg: #e7f4ec;
-  --warning: #a35d4e;
-  --warning-bg: #f9ece9;
-  --focus: #1d4ed8;
-  --radius: 12px;
+  color-scheme: light;
+  --canvas: #f7f6ea;
+  --paper: #fffdf7;
+  --paper-muted: #eeece3;
+  --paper-deep: #e3ded2;
+  --ink: #0e203a;
+  --ink-soft: #435269;
+  --line: #c6c2bd;
+  --line-strong: #9fa4a6;
+  --margin: #d86a58;
+  --action: #a9433b;
+  --action-hover: #8d342f;
+  --action-ink: #fffdf7;
+  --success: #2f6b45;
+  --success-bg: #edf4e9;
+  --warning: #8a542e;
+  --warning-bg: #fff2e8;
+  --focus: #0e203a;
+  --shadow-surface: 0 14px 34px rgba(14, 32, 58, 0.09);
+  --shadow-dialog: 0 24px 70px rgba(14, 32, 58, 0.22);
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
   --font-size-base: 17px;
   --line-height: 1.65;
+
+  /* 기존 인쇄·컴포넌트 계약과의 호환 별칭. */
+  --paper-bg: var(--canvas);
+  --paper-raised: var(--paper);
+  --paper-shadow: var(--paper-deep);
+  --accent: var(--action);
+  --accent-ink: var(--action-ink);
+  --radius: var(--radius-md);
 }
 
 html {
   font-size: var(--font-size-base);
+  background: var(--canvas);
 }
 
 body {
   margin: 0;
-  background: var(--paper-bg);
+  background: var(--canvas);
   color: var(--ink);
   font-family: "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
   line-height: var(--line-height);
+  text-rendering: optimizeLegibility;
 }
 
-/* 글자 크기 도구(세션 메모리 전용, 저장 없음) */
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(216, 106, 88, 0.28);
+}
+
+/* 글자 크기 도구(세션 메모리 전용, 저장 없음). */
 html.text-large {
   font-size: 21px;
 }

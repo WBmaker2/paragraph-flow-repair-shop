@@ -39,6 +39,6 @@ describe("생성 자산 장부 계약", () => {
 
   it("앱에서 자산을 실제로 사용한다(장식용 배경)", () => {
     const app = readFileSync(join(root, "src/app/App.tsx"), "utf8");
-    expect(app).toContain("paper-repair-workbench");
+    expect(app).toContain("repair-desk-atmosphere-v2");
   });
 });

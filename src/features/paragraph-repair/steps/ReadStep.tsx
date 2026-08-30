@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ActionButton from "../../../components/ActionButton";
 import { initialOrderIds } from "../../../content/missions";
 import type { FirstJudgment } from "../../../domain/types";
 import type { StepProps } from "../stepTypes";
@@ -47,9 +48,7 @@ export default function ReadStep({ mission, record, dispatch }: StepProps) {
                 });
               }}
             >
-              <span className="choice-button__mark" aria-hidden="true">
-                {judgment === value ? "✓" : ""}
-              </span>
+              <span className="choice-button__mark" aria-hidden="true" />
               {label}
               {judgment === value && <span className="choice-button__state">선택됨</span>}
             </button>
@@ -58,14 +57,13 @@ export default function ReadStep({ mission, record, dispatch }: StepProps) {
       </fieldset>
 
       <div className="workbench-actions">
-        <button
-          type="button"
-          className="action-button action-button--primary"
+        <ActionButton
+          pulse
           disabled={judgment === null}
           onClick={() => dispatch({ type: "ADVANCE" })}
         >
           다음
-        </button>
+        </ActionButton>
       </div>
     </div>
   );

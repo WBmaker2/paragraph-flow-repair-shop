@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Plate-only hero reproduction reference</title>
+  <style>
+    html, body { margin: 0; background: #f7f6ea; }
+    .comp-frame { position: relative; width: 1505px; height: 1045px; overflow: hidden; }
+    .region { box-sizing: border-box; position: absolute; }
+    .r-paper-ground { left: 10%; top: 10%; width: 10%; height: 10%; background-image: url('../assets/plates/paper-ground.png'); background-repeat: repeat; }
+    .r-correction-tape { left: 80%; top: 10%; width: 20%; height: 30%; }
+    .r-pencil { left: 80%; top: 40%; width: 20%; height: 50%; }
+    .r-binder-clip { left: 0; top: 80%; width: 20%; height: 20%; }
+    .r-paper-strips { left: 80%; top: 80%; width: 20%; height: 20%; }
+    .plate { margin: 0; }
+    .plate img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top left; }
+  </style>
+</head>
+<body>
+  <main class="comp-frame" aria-label="승인 컴프 plate 영역">
+    <div class="r-paper-ground region" data-region="paper-ground"></div>
+    <figure class="r-correction-tape region plate" data-region="correction-tape"><img src="../assets/plates/correction-tape.png" alt=""></figure>
+    <figure class="r-pencil region plate" data-region="pencil"><img src="../assets/plates/pencil.png" alt=""></figure>
+    <figure class="r-binder-clip region plate" data-region="binder-clip"><img src="../assets/plates/binder-clip.png" alt=""></figure>
+    <figure class="r-paper-strips region plate" data-region="paper-strips"><img src="../assets/plates/paper-strips.png" alt=""></figure>
+  </main>
+</body>
+</html>

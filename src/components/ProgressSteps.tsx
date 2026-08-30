@@ -26,8 +26,11 @@ export default function ProgressSteps({ current }: ProgressStepsProps) {
             className={`progress-steps__item progress-steps__item--${state}`}
             aria-current={state === "current" ? "step" : undefined}
           >
+            <span className="progress-steps__index" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
             <span className="progress-steps__label">{label}</span>
-            {state === "done" && <span className="sr-only">(완료)</span>}
+            {state === "done" && <span className="progress-steps__done">완료</span>}
           </li>
         );
       })}

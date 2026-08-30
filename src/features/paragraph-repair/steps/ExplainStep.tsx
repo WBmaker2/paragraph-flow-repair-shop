@@ -48,9 +48,7 @@ export default function ExplainStep({ record, dispatch }: StepProps) {
               aria-pressed={relation === value}
               onClick={() => chooseRelation(value)}
             >
-              <span className="choice-button__mark" aria-hidden="true">
-                {relation === value ? "✓" : ""}
-              </span>
+              <span className="choice-button__mark" aria-hidden="true" />
               {relationLabels[value]}
               {relation === value && <span className="choice-button__state">선택됨</span>}
             </button>
@@ -72,7 +70,7 @@ export default function ExplainStep({ record, dispatch }: StepProps) {
       />
 
       <div className="workbench-actions">
-        <ActionButton pulse disabled={relation === null} onClick={complete}>
+        <ActionButton pulse={relation !== null} disabled={relation === null} onClick={complete}>
           수리 완료 확인
         </ActionButton>
       </div>

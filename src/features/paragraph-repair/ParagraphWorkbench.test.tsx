@@ -71,6 +71,12 @@ describe("전체 읽기 단계", () => {
     await user.click(next);
     expect(lastAction(dispatch)).toMatchObject({ type: "ADVANCE" });
   });
+
+  it("현재 미션 번호와 현재 작업 단계가 함께 보인다", () => {
+    setup("READ", 0);
+    expect(screen.getByText("미션 1 / 6")).toBeInTheDocument();
+    expect(screen.getByRole("region", { name: "현재 작업" })).toBeInTheDocument();
+  });
 });
 
 describe("중심 문장 단계", () => {

@@ -11,4 +11,9 @@ export const generatedAssets: readonly GeneratedAsset[] = [
     usage: "작업대 배경(장식 전용, 글자·정답 없음)",
     createdDate: "2026-08-28",
   },
+  {
+    file: "src/assets/generated/repair-desk-atmosphere-v2.webp",
+    usage: "교정지 여백 작업대 배경(장식 전용, 글자·정답 없음)",
+    createdDate: "2026-08-30",
+  },
 ];

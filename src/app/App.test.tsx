@@ -4,12 +4,21 @@ import { describe, expect, it } from "vitest";
 import App from "./App";
 
 describe("App 셸", () => {
+  it("반복 헤더를 건너뛰는 링크와 본문 landmark를 제공한다", () => {
+    render(<App />);
+    expect(screen.getByRole("link", { name: "본문으로 건너뛰기" })).toHaveAttribute(
+      "href",
+      "#main-content",
+    );
+    expect(screen.getByRole("main")).toHaveAttribute("id", "main-content");
+  });
+
   it("처음에는 입구 화면을 보여 준다", () => {
     render(<App />);
     expect(
       screen.getByRole("heading", { level: 1, name: "문단 흐름 수리소" }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "활동 시작하기" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "활동 시작하기" })).toHaveClass("gi-pulse");
   });
 
   it("시작하면 첫 미션 화면으로 바뀌고 제목에 초점이 옮겨진다", async () => {

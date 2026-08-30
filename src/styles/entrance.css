@@ -1,0 +1,394 @@
+/* 입구 화면 — 첫 화면에서 목표, 첫 문단, 미션 목록의 관계를 한눈에 보여 준다. */
+.entrance {
+  position: relative;
+  min-width: 0;
+}
+
+.entrance__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(2rem, 6vw, 6.5rem);
+  align-items: start;
+  padding: clamp(2rem, 4vw, 4rem) 0 3.5rem;
+}
+
+.entrance__intro {
+  min-width: 0;
+}
+
+.entrance__title {
+  margin-bottom: 1rem;
+  color: var(--ink-soft);
+  font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+  letter-spacing: -0.03em;
+}
+
+.entrance__headline {
+  max-width: 10ch;
+  margin: 0;
+  font-size: clamp(2.7rem, 5.5vw, 4.7rem);
+  font-weight: 900;
+  letter-spacing: -0.09em;
+  line-height: 0.98;
+}
+
+.entrance__headline span {
+  color: var(--action);
+}
+
+.entrance__goal {
+  max-width: 35rem;
+  margin: 1.35rem 0 0;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.entrance__goal strong {
+  color: var(--ink);
+}
+
+.goal-list {
+  display: grid;
+  gap: 0.48rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.goal-list li {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+}
+
+.goal-list__index,
+.record-flow span {
+  color: var(--action);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.entrance__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-top: 1.35rem;
+}
+
+.entrance__start {
+  min-width: 10rem;
+  padding: 0.8rem 1.35rem;
+  font-size: 1.05rem;
+}
+
+.entrance__time {
+  margin: 0.7rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.entrance__work-area {
+  display: grid;
+  gap: 1.6rem;
+  min-width: 0;
+}
+
+.entrance__preview {
+  position: relative;
+  min-width: 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg) var(--radius-sm) var(--radius-lg) var(--radius-sm);
+  background: rgba(255, 253, 247, 0.94);
+  box-shadow: var(--shadow-surface);
+}
+
+.entrance__preview::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.1rem;
+  width: 1px;
+  background: rgba(216, 106, 88, 0.5);
+  content: "";
+}
+
+.entrance__preview > * {
+  position: relative;
+  z-index: 1;
+  margin-left: 1.2rem;
+}
+
+.entrance__preview-heading,
+.entrance__board-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+}
+
+.entrance__preview-heading > * {
+  margin-left: 0;
+}
+
+.entrance__preview-relation,
+.mission-list__relation {
+  flex: none;
+  color: var(--ink-soft);
+  font-size: 0.77rem;
+  font-weight: 800;
+}
+
+.entrance__preview h2,
+.entrance__mission-board h2,
+.entrance__record h2 {
+  margin: 0.3rem 0 0.65rem;
+  font-size: clamp(1.45rem, 2.7vw, 2.15rem);
+}
+
+.entrance__preview p:not(.section-label) {
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+}
+
+.paragraph-preview {
+  display: grid;
+  gap: 0;
+  margin: 1.35rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.paragraph-preview__item {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 0.93rem;
+}
+
+.paragraph-preview__number {
+  color: var(--margin);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.entrance__mission-board {
+  min-width: 0;
+  padding-top: 0.25rem;
+}
+
+.entrance__board-header h2 {
+  margin-bottom: 0;
+}
+
+.entrance__board-note {
+  margin-top: 1.2rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.mission-list {
+  display: grid;
+  gap: 0;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.mission-list__item {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr) auto;
+  gap: 0.7rem;
+  align-items: center;
+  min-width: 0;
+  padding: 0.78rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.mission-list__number {
+  color: var(--action);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.mission-list__name {
+  min-width: 0;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.entrance__record {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.55fr) minmax(0, 1.45fr);
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.entrance__record h2 {
+  margin-bottom: 0;
+}
+
+.record-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.record-flow li {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+
+.entrance__notice {
+  max-width: 55rem;
+  margin: 1.4rem 0 0;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid rgba(138, 84, 46, 0.45);
+  border-radius: var(--radius-sm);
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.entrance__notice ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.entrance__notice li + li {
+  margin-top: 0.25rem;
+}
+
+/* 장식 자산은 본문보다 뒤에 놓고 의미를 만들지 않는다. */
+.ambient-toolkit {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ambient-toolkit img {
+  position: absolute;
+  display: block;
+  max-width: none;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+.ambient-toolkit__paper {
+  inset: 11rem 9% auto;
+  width: 84%;
+  height: 38rem;
+  opacity: 0.08 !important;
+}
+
+.ambient-toolkit__tape {
+  top: 9rem;
+  right: 1%;
+  width: min(10rem, 12vw);
+  opacity: 0.28 !important;
+  transform: rotate(8deg);
+}
+
+.ambient-toolkit__pencil {
+  top: 10rem;
+  left: -2%;
+  width: min(17rem, 18vw);
+  opacity: 0.24 !important;
+  transform: rotate(-16deg);
+}
+
+.ambient-toolkit__clip {
+  right: 11%;
+  bottom: 4rem;
+  width: min(10rem, 13vw);
+  transform: rotate(9deg);
+}
+
+.ambient-toolkit__strips {
+  right: -1%;
+  bottom: 7rem;
+  width: min(19rem, 24vw);
+  transform: rotate(-5deg);
+}
+
+@media (max-width: 900px) {
+  .entrance__layout {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .entrance__layout,
+  .entrance__record {
+    grid-template-columns: 1fr;
+  }
+
+  .entrance__layout {
+    padding-top: 2.4rem;
+  }
+
+  .entrance__headline {
+    max-width: 12ch;
+  }
+
+  .record-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ambient-toolkit {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .entrance__preview-heading,
+  .entrance__board-header {
+    display: block;
+  }
+
+  .entrance__preview-relation,
+  .entrance__board-note {
+    display: inline-block;
+    margin-top: 0.65rem;
+  }
+
+  .record-flow {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .entrance__headline {
+    font-size: 2.65rem;
+  }
+
+  .mission-list__item {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .mission-list__relation {
+    grid-column: 2;
+  }
+}

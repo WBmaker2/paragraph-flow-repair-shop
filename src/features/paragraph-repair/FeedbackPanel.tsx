@@ -18,7 +18,13 @@ interface FeedbackPanelProps {
 export default function FeedbackPanel({ tone, title, summary, items, children }: FeedbackPanelProps) {
   return (
     <section className={`feedback-panel feedback-panel--${tone}`} role="status">
-      <h3 className="feedback-panel__title">{title}</h3>
+      <div className="feedback-panel__heading">
+        <span className="feedback-panel__marker" aria-hidden="true" />
+        <div>
+          <p className="section-label">검토 메모</p>
+          <h3 className="feedback-panel__title">{title}</h3>
+        </div>
+      </div>
       {summary && <p>{summary}</p>}
       {items.length > 0 && (
         <ul className="feedback-panel__list">

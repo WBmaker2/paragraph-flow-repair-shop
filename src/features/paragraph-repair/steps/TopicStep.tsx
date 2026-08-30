@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ActionButton from "../../../components/ActionButton";
 import { feedbackText } from "../../../content/missions";
 import { evaluateTopic } from "../../../domain/paragraphEvaluator";
 import FeedbackPanel from "../FeedbackPanel";
@@ -42,9 +43,7 @@ export default function TopicStep({ mission, record, dispatch }: StepProps) {
               aria-pressed={selectedId === sentence.id}
               onClick={() => choose(sentence.id)}
             >
-              <span className="choice-button__mark" aria-hidden="true">
-                {selectedId === sentence.id ? "✓" : ""}
-              </span>
+              <span className="choice-button__mark" aria-hidden="true" />
               {sentence.text}
               {selectedId === sentence.id && <span className="choice-button__state">선택됨</span>}
             </button>
@@ -53,25 +52,23 @@ export default function TopicStep({ mission, record, dispatch }: StepProps) {
       </ul>
 
       <div className="workbench-actions">
-        <button
-          type="button"
-          className="action-button action-button--primary"
+        <ActionButton
+          pulse={accepted === null}
           disabled={!selectedId}
           onClick={confirm}
         >
           고르기 완료
-        </button>
+        </ActionButton>
       </div>
 
       {accepted === true && (
         <FeedbackPanel tone="success" title="중심 문장을 찾았어요!" items={evidence}>
-          <button
-            type="button"
-            className="action-button action-button--primary"
+          <ActionButton
+            pulse
             onClick={() => dispatch({ type: "ADVANCE" })}
           >
             다음 단계로
-          </button>
+          </ActionButton>
         </FeedbackPanel>
       )}
 
@@ -86,13 +83,12 @@ export default function TopicStep({ mission, record, dispatch }: StepProps) {
           summary="지금 고른 문장을 기록에 남겨 두고 다음 단계로 가요."
           items={evidence}
         >
-          <button
-            type="button"
-            className="action-button action-button--primary"
+          <ActionButton
+            pulse
             onClick={() => dispatch({ type: "ADVANCE" })}
           >
             다음 단계로
-          </button>
+          </ActionButton>
         </FeedbackPanel>
       )}
     </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ActionButton from "../../../components/ActionButton";
 import { feedbackText } from "../../../content/missions";
 import { evaluateOffTopic } from "../../../domain/paragraphEvaluator";
 import type { OffTopicEvaluation } from "../../../domain/types";
@@ -107,33 +108,29 @@ export default function RelevanceStep({ mission, record, dispatch }: StepProps) 
           setFeedback(null);
         }}
       >
-        <span className="choice-button__mark" aria-hidden="true">
-          {declaredNone ? "✓" : ""}
-        </span>
+        <span className="choice-button__mark" aria-hidden="true" />
         벗어난 문장이 없어요
         {declaredNone && <span className="choice-button__state">선택됨</span>}
       </button>
 
       <div className="workbench-actions">
-        <button
-          type="button"
-          className="action-button action-button--primary"
+        <ActionButton
+          pulse={feedback === null}
           disabled={completeDisabled}
           onClick={complete}
         >
           관련성 점검 완료
-        </button>
+        </ActionButton>
       </div>
 
       {feedback?.accepted && (
         <FeedbackPanel tone="success" title="문단이 깔끔해졌어요!" items={[]}>
-          <button
-            type="button"
-            className="action-button action-button--primary"
+          <ActionButton
+            pulse
             onClick={() => dispatch({ type: "ADVANCE" })}
           >
             다음 단계로
-          </button>
+          </ActionButton>
         </FeedbackPanel>
       )}
 
@@ -153,13 +150,12 @@ export default function RelevanceStep({ mission, record, dispatch }: StepProps) 
           summary="지금 상태를 기록에 남기고 다음 단계로 가요."
           items={evidenceItems}
         >
-          <button
-            type="button"
-            className="action-button action-button--primary"
+          <ActionButton
+            pulse
             onClick={() => dispatch({ type: "ADVANCE" })}
           >
             다음 단계로
-          </button>
+          </ActionButton>
         </FeedbackPanel>
       )}
     </div>

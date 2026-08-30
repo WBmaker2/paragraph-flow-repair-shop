@@ -1,4 +1,4 @@
-/* 모션 — gi-pulse는 문단 시험하기·수리 완료 확인 두 필수 버튼에만 사용(계획 §10). */
+/* 모션 — 현재 단계의 필수 행동을 아우라로 표시한다. */
 .gi-pulse {
   animation: gi-pulse 1.8s ease-in-out infinite;
 }
@@ -6,14 +6,15 @@
 @keyframes gi-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(59, 110, 165, 0.45);
+    box-shadow: 0 0 0 0 rgba(169, 67, 59, 0.42);
   }
+
   50% {
-    box-shadow: 0 0 0 8px rgba(59, 110, 165, 0);
+    box-shadow: 0 0 0 8px rgba(169, 67, 59, 0);
   }
 }
 
-/* 축소 모션: 이동·맥박 제거, 3px 고정 외곽선과 필수 배지로 대체. */
+/* 축소 모션에서는 깜빡임 대신 고정 외곽선과 텍스트 배지를 사용한다. */
 @media (prefers-reduced-motion: reduce) {
   .gi-pulse {
     animation: none;

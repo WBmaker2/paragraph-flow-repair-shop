@@ -56,13 +56,25 @@ export default function LearningReport({ state, dispatch, headingRef }: Learning
   const [confirmOpen, setConfirmOpen] = useState(false);
 
   return (
-    <section aria-labelledby="report-title">
-      <h1 id="report-title" tabIndex={-1} ref={headingRef} className="screen-title">
-        수리 기록
-      </h1>
-      <p className="workbench-hint">
-        여기에는 채점이 없어요. 처음 판단과 사용한 근거, 고친 결과를 미션별로 모았어요.
-      </p>
+    <section className="report-page" aria-labelledby="report-title">
+      <header className="report-header">
+        <div>
+          <p className="section-label">세션 기록</p>
+          <h1 id="report-title" tabIndex={-1} ref={headingRef} className="screen-title">
+            수리 기록
+          </h1>
+          <p className="workbench-hint">
+            여기에는 채점이 없어요. 처음 판단과 사용한 근거, 고친 결과를 미션별로 모았어요.
+          </p>
+        </div>
+        <span className="report-header__count">6개 미션</span>
+      </header>
+
+      <div className="report-summary" aria-label="이번 세션 요약">
+        <div><strong>처음 판단</strong><span>내가 읽은 첫 느낌</span></div>
+        <div><strong>최종 수리</strong><span>문장과 관계를 다시 놓은 결과</span></div>
+        <div><strong>근거 기록</strong><span>다음 글에도 가져갈 생각</span></div>
+      </div>
 
       {state.records.map((record, index) => {
         const mission = missions[index]!;
@@ -110,10 +122,13 @@ export default function LearningReport({ state, dispatch, headingRef }: Learning
 
         return (
           <article key={mission.id} className="report-mission" aria-label={`${index + 1}번 미션`}>
-            <h3>
-              {index + 1}번 미션 · {missionTitles[mission.id]}
-            </h3>
-            <p className="report-mission__relation">관계: {relationLabels[mission.relation]}</p>
+            <header className="report-mission__header">
+              <div>
+                <p className="section-label">미션 {String(index + 1).padStart(2, "0")}</p>
+                <h3>{missionTitles[mission.id]}</h3>
+              </div>
+              <p className="report-mission__relation">관계: {relationLabels[mission.relation]}</p>
+            </header>
 
             <div className="report-order">
               <OrderList title={`${index + 1}번 미션 처음 순서`} orderIds={initial} texts={texts} />
