@@ -40,6 +40,11 @@
     background: #ffffff;
   }
 
+  .report-takeaway {
+    border: 1px solid #000000;
+    background: #ffffff;
+  }
+
   a[href]::after {
     content: "";
   }

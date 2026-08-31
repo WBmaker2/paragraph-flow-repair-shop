@@ -44,6 +44,65 @@
   font-size: 0.78rem;
 }
 
+.report-takeaway {
+  display: grid;
+  gap: 1.1rem;
+  margin: 0 0 1.6rem;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border: 1px solid var(--success);
+  border-left: 4px solid var(--action);
+  border-radius: var(--radius-lg) var(--radius-sm) var(--radius-lg) var(--radius-sm);
+  background: var(--success-bg);
+}
+
+.report-takeaway .section-title {
+  margin-top: 0.2rem;
+}
+
+.report-takeaway__note {
+  margin: 0.45rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.report-takeaway__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.report-takeaway__step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+  padding: 0.8rem;
+  border-top: 2px solid var(--line);
+  background: rgba(255, 253, 247, 0.7);
+}
+
+.report-takeaway__step-number {
+  color: var(--action);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.report-takeaway__step strong {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.report-takeaway__step p {
+  margin: 0.2rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .report-mission {
   min-width: 0;
   margin: 1.4rem 0;
@@ -131,6 +190,10 @@
 }
 
 @media (max-width: 700px) {
+  .report-takeaway__steps {
+    grid-template-columns: 1fr;
+  }
+
   .report-order {
     grid-template-columns: 1fr;
   }

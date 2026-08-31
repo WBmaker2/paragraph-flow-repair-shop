@@ -120,6 +120,8 @@
 }
 
 .workbench__guide {
+  grid-column: 1;
+  grid-row: 1;
   min-width: 0;
   padding: 1.4rem 1.25rem;
   border-right: 1px solid var(--line);
@@ -152,6 +154,8 @@
 }
 
 .workbench__task {
+  grid-column: 2;
+  grid-row: 1;
   min-width: 0;
   padding: clamp(1.2rem, 3vw, 2.1rem);
 }
@@ -381,16 +385,23 @@
   }
 
   .workbench__surface {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
   }
 
   .workbench__guide {
+    order: 2;
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
     column-gap: 0.75rem;
     align-items: start;
     border-right: 0;
-    border-bottom: 1px solid var(--line);
+    border-top: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  .workbench__task {
+    order: 1;
   }
 
   .workbench__guide-mark {

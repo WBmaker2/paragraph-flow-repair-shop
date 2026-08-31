@@ -70,6 +70,14 @@ export default function ParagraphWorkbench({ state, dispatch, headingRef }: Para
       </section>
 
       <section className="workbench__surface" aria-label="현재 작업">
+        <div className="workbench__task">
+          {state.step === "READ" && <ReadStep {...stepProps} />}
+          {state.step === "TOPIC" && <TopicStep {...stepProps} />}
+          {state.step === "ORDER" && <OrderStep {...stepProps} />}
+          {state.step === "RELEVANCE" && <RelevanceStep {...stepProps} />}
+          {state.step === "CONNECTOR" && <ConnectorStep {...stepProps} />}
+          {state.step === "EXPLAIN" && <ExplainStep {...stepProps} />}
+        </div>
         <aside className="workbench__guide">
           <span className="workbench__guide-mark" aria-hidden="true">{String(state.missionIndex + 1).padStart(2, "0")}</span>
           <p className="section-label">수리 메모</p>
@@ -79,14 +87,6 @@ export default function ParagraphWorkbench({ state, dispatch, headingRef }: Para
             <RepairToolsArt />
           </div>
         </aside>
-        <div className="workbench__task">
-          {state.step === "READ" && <ReadStep {...stepProps} />}
-          {state.step === "TOPIC" && <TopicStep {...stepProps} />}
-          {state.step === "ORDER" && <OrderStep {...stepProps} />}
-          {state.step === "RELEVANCE" && <RelevanceStep {...stepProps} />}
-          {state.step === "CONNECTOR" && <ConnectorStep {...stepProps} />}
-          {state.step === "EXPLAIN" && <ExplainStep {...stepProps} />}
-        </div>
       </section>
 
       <div className="workbench-actions workbench-actions--secondary">

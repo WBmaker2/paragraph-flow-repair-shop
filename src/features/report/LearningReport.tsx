@@ -77,6 +77,37 @@ export default function LearningReport({ state, dispatch, headingRef }: Learning
         <div><strong>근거 기록</strong><span>다음 글에도 가져갈 생각</span></div>
       </div>
 
+      <section className="report-takeaway" aria-label="다음 글에 써 볼 방법">
+        <div>
+          <p className="section-label">다음 글에 써 볼 방법</p>
+          <h2 className="section-title">읽고, 살피고, 근거로 말해요.</h2>
+          <p className="report-takeaway__note">다음 문단을 만났을 때 이 세 가지를 차례로 떠올려 보세요.</p>
+        </div>
+        <ol className="report-takeaway__steps">
+          <li className="report-takeaway__step">
+            <span className="report-takeaway__step-number" aria-hidden="true">01</span>
+            <div>
+              <strong>중심 생각 찾기</strong>
+              <p>문단 전체를 가장 잘 보여 주는 문장을 찾아요.</p>
+            </div>
+          </li>
+          <li className="report-takeaway__step">
+            <span className="report-takeaway__step-number" aria-hidden="true">02</span>
+            <div>
+              <strong>문장 관계 살피기</strong>
+              <p>앞뒤 문장이 시간·이유·비교로 어떻게 이어지는지 봐요.</p>
+            </div>
+          </li>
+          <li className="report-takeaway__step">
+            <span className="report-takeaway__step-number" aria-hidden="true">03</span>
+            <div>
+              <strong>근거로 말하기</strong>
+              <p>내가 그렇게 생각한 문장 속 단서를 말해요.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
       {state.records.map((record, index) => {
         const mission = missions[index]!;
         const texts = Object.fromEntries(mission.sentences.map((s) => [s.id, s.text]));
@@ -174,7 +205,7 @@ export default function LearningReport({ state, dispatch, headingRef }: Learning
       <div className="report-notice">
         <p>여러분의 기록은 이 탭에만 있어요. 새로고침하면 사라져요.</p>
         <p>
-          이 앱의 문단과 판정은 국어 교사 검수 중이며, 교육 모형은 실제 세계 전체를 보장하지 않아요.
+          이 앱의 문단과 판정은 국어 교사가 검수 중이에요. 이 방법이 모든 글에 똑같이 맞는 것은 아니에요. 글의 근거를 함께 살펴보세요.
         </p>
       </div>
 

@@ -88,6 +88,16 @@ describe("수리 기록 보고서", () => {
     expect(rainEvidence).toHaveTextContent("원인과 결과가 뒤집혀요");
   });
 
+  it("다음 글에 적용할 세 단계 전략과 쉬운 범위 안내를 보여 준다", () => {
+    setup();
+    const takeaway = screen.getByRole("region", { name: "다음 글에 써 볼 방법" });
+    expect(takeaway).toHaveTextContent("중심 생각 찾기");
+    expect(takeaway).toHaveTextContent("문장 관계 살피기");
+    expect(takeaway).toHaveTextContent("근거로 말하기");
+    expect(screen.getByText(/국어 교사가 검수 중이에요/)).toBeInTheDocument();
+    expect(screen.getByText(/모든 글에 똑같이 맞는 것은 아니에요/)).toBeInTheDocument();
+  });
+
   it("최초 판단, 중심 문장, 보관함, 이어 주는 말, 이유를 미션별로 보여 준다", () => {
     setup();
     const article = screen.getByRole("article", { name: /1번 미션/ });
@@ -102,7 +112,7 @@ describe("수리 기록 보고서", () => {
   it("새로고침하면 기록이 사라진다는 안내와 검수 안내를 보여 준다", () => {
     setup();
     expect(screen.getByText(/새로고침하면 사라져요/)).toBeInTheDocument();
-    expect(screen.getByText(/교사 검수/)).toBeInTheDocument();
+    expect(screen.getByText(/국어 교사가 검수 중/)).toBeInTheDocument();
   });
 
   it("인쇄하기는 인쇄 대화상자를 연다", async () => {
